@@ -16,6 +16,7 @@ get the latest version from the master branch.
 
 - 2017-07-31 - (private company) - (no branch available)
 - 2017-09-21 - (private company) - 20170921
+- 2017-09-26 - Bangkok .NET Meetup - 20170926_bkk_dotnet_meetup
 
 # Contact
 
