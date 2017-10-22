@@ -20,6 +20,6 @@ namespace MyCo.Tasks.Impl.EntityFramework
             if (options == null) { throw new ArgumentNullException("options"); }
         }
 
-        public DbSet<TaskEntity> Tasks { get; set; }
+        public DbSet<TaskEntity> Task { get; set; }
     }
 }

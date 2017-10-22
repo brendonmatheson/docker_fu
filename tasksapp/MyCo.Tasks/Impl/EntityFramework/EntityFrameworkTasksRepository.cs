@@ -25,19 +25,19 @@ namespace MyCo.Tasks.Impl.EntityFramework
 
             _context = context;
 
-            if (_context.Tasks.Count() == 0)
+            if (_context.Task.Count() == 0)
             {
-                _context.Tasks.Add(new TaskEntity(
+                _context.Task.Add(new TaskEntity(
                     Guid.NewGuid(),
                     "Task 1",
                     false));
 
-                _context.Tasks.Add(new TaskEntity(
+                _context.Task.Add(new TaskEntity(
                     Guid.NewGuid(),
                     "Task 2",
                     false));
 
-                _context.Tasks.Add(new TaskEntity(
+                _context.Task.Add(new TaskEntity(
                     Guid.NewGuid(),
                     "Task 3",
                     false));
@@ -50,7 +50,7 @@ namespace MyCo.Tasks.Impl.EntityFramework
         {
             if (taskId == Guid.Empty) { throw new ArgumentException("Value cannot be empty.", "taskId"); }
 
-            TaskEntity result = _context.Tasks.Find(taskId);
+            TaskEntity result = _context.Task.Find(taskId);
 
             if (result == null)
             {
@@ -62,7 +62,7 @@ namespace MyCo.Tasks.Impl.EntityFramework
 
         public IList<TaskEntity> TaskSearch()
         {
-            return _context.Tasks.ToList();
+            return _context.Task.ToList();
         }
 
         public TaskResource TaskAdd(TaskResource task)

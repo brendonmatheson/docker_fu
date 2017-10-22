@@ -26,18 +26,26 @@ namespace MyCo.Tasks
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
-            services.AddDbContext<TasksContext>(x => x.UseInMemoryDatabase("Tasks"));
+            bool useInMemDatabase = false;
+
+            if (useInMemDatabase)
+            {
+                services.AddDbContext<TasksContext>(x => x.UseInMemoryDatabase("Tasks"));
+            }
+            else
+            {
+                services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=localhost,1401; Database=Tasks; User ID=sa; Password=p@ssw0rz!@#"));
+            }
+
             services.AddScoped(
                 typeof(TasksRepository),
                 typeof(EntityFrameworkTasksRepository));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
