@@ -44,5 +44,7 @@ WORKDIR /service
 
 COPY --from=service-build /build/out .
 
+EXPOSE 80
+
 ENTRYPOINT ["dotnet", "MyCo.Tasks.dll"]
 

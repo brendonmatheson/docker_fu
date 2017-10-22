@@ -1,0 +1,28 @@
+version: "3"
+services:
+
+    api1:
+        build: .
+
+    api2:
+        build: .
+
+    api3:
+        build: .
+
+    haproxy:
+        image: library/haproxy:1.7
+        volumes:
+          - haproxy_cfg:/usr/local/etc/haproxy
+        ports:
+            - "80:80"
+        expose:
+            - "80"
+        links:
+            - api1
+            - api2
+            - api3
+
+volumes:
+  haproxy_cfg:
+    external: true
