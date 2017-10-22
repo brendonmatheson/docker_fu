@@ -30,7 +30,7 @@ namespace MyCo.Tasks
         {
             services.AddMvc();
 
-            bool useInMemDatabase = false;
+            bool useInMemDatabase = this.Configuration.GetValue<bool>("UseInMemDatabase");
 
             if (useInMemDatabase)
             {
