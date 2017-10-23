@@ -1,5 +1,5 @@
-REM Introduction to Docker for .NET Developers
-REM Copyright © 2017, Brendon Matheson
+REM Docker for .NET Developers
+REM Copyright ï¿½ 2017, Brendon Matheson
 REM
 REM This file is part of the supporting materals for a series of presentations on Docker by Brendon Matheson in 2017.
 REM

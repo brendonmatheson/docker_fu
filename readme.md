@@ -1,18 +1,17 @@
 # Introduction
 
-This repo contains slides and supporting materials for a series of presentations
-by Brendon Matheson in 2017 on "Introduction to Docker for .NET Developers"
+This repo contains slides and supporting materials for a series of presentations by Brendon Matheson in 2017 on "Docker
+for .NET Developers"
 
 # License
 
-This material is published under the terms of the Creative Commons BY-NC-ND
-license.  See https://creativecommons.org/licenses/by-nc-nd/4.0 for details
+This material is published under the terms of the Creative Commons BY-NC-ND license.  See
+https://creativecommons.org/licenses/by-nc-nd/4.0 for details
 
 # Sessions
 
-The contents of this repo are branched for each session that was given.  You can
-get the slides for the session you attended from the corresponding branch, or
-get the latest version from the master branch.
+The contents of this repo are branched for each session that was given.  You can get the slides for the session you
+attended from the corresponding branch, or get the latest version from the master branch.
 
 - 2017-07-31 - (private company) - (no branch available)
 - 2017-09-21 - (private company) - 20170921

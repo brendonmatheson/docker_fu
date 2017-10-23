@@ -1,5 +1,5 @@
-# Introduction to Docker for .NET Developers
-# Copyright © 2017, Brendon Matheson
+# Docker for .NET Developers
+# Copyright ï¿½ 2017, Brendon Matheson
 #
 # This file is part of the supporting materals for a series of presentations on Docker by Brendon Matheson in 2017.
 #
