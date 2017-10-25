@@ -8,8 +8,10 @@
 // This material is published under the terms of the Creative Commons BY-NC-ND license.  See
 // https://creativecommons.org/licenses/by-nc-nd/4.0 for details
 
-namespace MyCo.Tasks.Impl.EntityFramework
+namespace MyCo.Tasks.Repository.Impl.EntityFramework
 {
+    using MyCo.Tasks.Api;
+    using MyCo.Tasks.Framework;
     using System;
     using System.Collections.Generic;
     using System.Linq;

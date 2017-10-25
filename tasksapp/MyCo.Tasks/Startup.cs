@@ -15,7 +15,8 @@ namespace MyCo.Tasks
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using MyCo.Tasks.Impl.EntityFramework;
+    using MyCo.Tasks.Repository;
+    using MyCo.Tasks.Repository.Impl.EntityFramework;
 
     public class Startup
     {

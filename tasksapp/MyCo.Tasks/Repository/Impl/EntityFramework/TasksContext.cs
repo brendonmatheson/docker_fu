@@ -8,30 +8,18 @@
 // This material is published under the terms of the Creative Commons BY-NC-ND license.  See
 // https://creativecommons.org/licenses/by-nc-nd/4.0 for details
 
-namespace MyCo.Tasks
+namespace MyCo.Tasks.Repository.Impl.EntityFramework
 {
+    using Microsoft.EntityFrameworkCore;
     using System;
 
-    public class TaskResource
+    public class TasksContext : DbContext
     {
-        public TaskResource()
+        public TasksContext(DbContextOptions<TasksContext> options) : base(options)
         {
+            if (options == null) { throw new ArgumentNullException("options"); }
         }
 
-        public TaskResource(
-            Guid taskId,
-            string name,
-            bool completed)
-        {
-            this.TaskId = taskId;
-            this.Name = name;
-            this.Complete = completed;
-        }
-
-        public Guid TaskId { get; set; }
-
-        public string Name { get; set; }
-
-        public bool Complete { get; set; }
+        public DbSet<TaskEntity> Task { get; set; }
     }
 }

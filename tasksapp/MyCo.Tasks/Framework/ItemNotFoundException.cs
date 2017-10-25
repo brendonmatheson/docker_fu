@@ -8,20 +8,11 @@
 // This material is published under the terms of the Creative Commons BY-NC-ND license.  See
 // https://creativecommons.org/licenses/by-nc-nd/4.0 for details
 
-namespace MyCo.Tasks
+namespace MyCo.Tasks.Framework
 {
     using System;
 
-    public static class TasksExtensions
+    public class ItemNotFoundException : Exception
     {
-        public static TaskResource ToResource(this TaskEntity entity)
-        {
-            if (entity == null) { throw new ArgumentNullException("entity"); }
-
-            return new TaskResource(
-                entity.TaskId,
-                entity.Name,
-                entity.Completed);
-        }
     }
 }

@@ -10,29 +10,20 @@
 
 namespace MyCo.Tasks
 {
+    using MyCo.Tasks.Api;
+    using MyCo.Tasks.Repository;
     using System;
-    using System.ComponentModel.DataAnnotations;
 
-    public class TaskEntity
+    public static class TasksExtensions
     {
-        public TaskEntity()
+        public static TaskResource ToResource(this TaskEntity entity)
         {
+            if (entity == null) { throw new ArgumentNullException("entity"); }
+
+            return new TaskResource(
+                entity.TaskId,
+                entity.Name,
+                entity.Completed);
         }
-
-        public TaskEntity(
-            Guid taskId,
-            string name,
-            bool completed)
-        {
-            this.TaskId = taskId;
-            this.Name = name;
-            this.Completed = completed;
-        }
-
-        [Key] public Guid TaskId { get; set; }
-
-        public string Name { get; set; }
-
-        public bool Completed { get; set; }
     }
 }
