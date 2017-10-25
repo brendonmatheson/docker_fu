@@ -19,11 +19,6 @@ FROM microsoft/aspnetcore-build:2.0-jessie AS service-build
 RUN mkdir /build
 WORKDIR /build
 
-#COPY MyCo.Tasks/MyCo.Tasks.csproj ./
-#RUN dotnet restore
-#COPY MyCo.Tasks/ ./
-#RUN dotnet publish -c Release -o out
-
 COPY MyCo.Tasks/ ./
 # Clean first in case when we're building on a dev machine where build artifacts may exist in the working tree.
 RUN dotnet clean
