@@ -18,11 +18,8 @@ services:
         volumes:
           - haproxy_cfg:/usr/local/etc/haproxy
         ports:
-            - "9871:80"
-            - "9872:70"
-        expose:
-            - "9871"
-            - "9872"
+            - "9880:80"
+            - "9881:70"
         links:
             - api1
             - api2
