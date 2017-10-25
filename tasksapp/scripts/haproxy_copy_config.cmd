@@ -22,7 +22,8 @@ REM via a Docker container.  This script:
 REM - Launches an Alpine Linux container with the haproxy_cfg named volume mounted at /haproxy_cfg
 REM - Uses docker cp to copy the haproxy.cfg file from the local file system into the named volume via the container
 REM
-REM The Alpine Linux container will terminate after 5 seconds.
+REM The Alpine Linux container will terminate and auto-delete after 5 seconds leaving the haproxy.cfg file in the 
+REM persistent volume.
 
 REM Launch Alphine Linux with the haproxy_cfg named volume mounted
 docker run -d --rm --name haproxy_cfg_copy -v haproxy_cfg:/haproxy_cfg library/alpine:3.6 sleep 5s

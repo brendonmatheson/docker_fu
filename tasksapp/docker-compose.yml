@@ -3,12 +3,15 @@ services:
 
     api1:
         build: .
+        image: myco/tasks
 
     api2:
         build: .
+        image: myco/tasks
 
     api3:
         build: .
+        image: myco/tasks
 
     haproxy:
         image: library/haproxy:1.7
@@ -16,8 +19,10 @@ services:
           - haproxy_cfg:/usr/local/etc/haproxy
         ports:
             - "9871:80"
+            - "9872:70"
         expose:
             - "9871"
+            - "9872"
         links:
             - api1
             - api2
