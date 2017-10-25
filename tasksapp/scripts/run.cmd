@@ -1,3 +1,5 @@
+@echo off
+
 REM Docker for .NET Developers
 REM Copyright � 2017, Brendon Matheson
 REM
