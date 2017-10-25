@@ -14,7 +14,7 @@
 # Build the application using the aspnetcore-build containerized build environment
 #
 
-FROM microsoft/aspnetcore-build:2.0-jessie AS service-build
+FROM microsoft/aspnetcore-build:2.0-jessie AS tasks-build
 
 RUN mkdir /build
 WORKDIR /build
@@ -37,7 +37,7 @@ FROM microsoft/aspnetcore:2.0-jessie
 RUN mkdir /service
 WORKDIR /service
 
-COPY --from=service-build /build/out .
+COPY --from=tasks-build /build/out .
 
 EXPOSE 80
 
