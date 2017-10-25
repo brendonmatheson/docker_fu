@@ -10,15 +10,21 @@
 
 namespace MyCo.Tasks.Repository
 {
-    using System;
-    using System.Collections.Generic;
-
-    public interface TasksRepository
+    /// <summary>
+    /// Represents a request to add a new Task to the repository.
+    /// </summary>
+    public class TaskAdd
     {
-        TaskEntity TaskGet(Guid taskId);
+        public TaskAdd(
+            string name,
+            bool completed)
+        {
+            this.Name = name;
+            this.Completed = completed;
+        }
 
-        IList<TaskEntity> TaskSearch();
+        public string Name { get; set; }
 
-        TaskEntity TaskAdd(TaskAdd request);
+        public bool Completed { get; set; }
     }
 }

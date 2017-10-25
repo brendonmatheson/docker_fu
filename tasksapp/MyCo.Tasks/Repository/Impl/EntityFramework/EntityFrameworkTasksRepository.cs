@@ -10,7 +10,6 @@
 
 namespace MyCo.Tasks.Repository.Impl.EntityFramework
 {
-    using MyCo.Tasks.Api;
     using MyCo.Tasks.Framework;
     using System;
     using System.Collections.Generic;
@@ -29,22 +28,9 @@ namespace MyCo.Tasks.Repository.Impl.EntityFramework
 
             if (_context.Task.Count() == 0)
             {
-                _context.Task.Add(new TaskEntity(
-                    Guid.NewGuid(),
-                    "Task 1",
-                    false));
-
-                _context.Task.Add(new TaskEntity(
-                    Guid.NewGuid(),
-                    "Task 2",
-                    false));
-
-                _context.Task.Add(new TaskEntity(
-                    Guid.NewGuid(),
-                    "Task 3",
-                    false));
-
-                _context.SaveChanges();
+                this.TaskAdd(new TaskAdd("Task 1", false));
+                this.TaskAdd(new TaskAdd("Task 2", false));
+                this.TaskAdd(new TaskAdd("Task 3", false));
             }
         }
 
@@ -67,9 +53,19 @@ namespace MyCo.Tasks.Repository.Impl.EntityFramework
             return _context.Task.ToList();
         }
 
-        public TaskResource TaskAdd(TaskResource task)
+        public TaskEntity TaskAdd(TaskAdd request)
         {
-            throw new System.NotImplementedException();
+            if (request == null) { throw new ArgumentNullException("request"); }
+
+            TaskEntity entity = new TaskEntity(
+                Guid.NewGuid(),
+                request.Name,
+                request.Completed);
+
+            _context.Task.Add(entity);
+            _context.SaveChanges();
+
+            return entity;
         }
     }
 }
