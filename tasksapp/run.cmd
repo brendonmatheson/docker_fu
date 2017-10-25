@@ -11,8 +11,8 @@ REM https:REMcreativecommons.org/licenses/by-nc-nd/4.0 for details
 docker run ^
 	--rm ^
 	-e "ASPNET_ENVIRONMENT=Production" ^
-	-p 8080:80 ^
+	-p 9870:80 ^
 	--name service-dev ^
 	-it ^
-	bren/service:latest
+	myco/tasks:latest
 
