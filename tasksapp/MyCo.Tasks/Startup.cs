@@ -15,6 +15,7 @@ namespace MyCo.Tasks
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using MyCo.Tasks.Api;
     using MyCo.Tasks.Repository;
     using MyCo.Tasks.Repository.Impl.EntityFramework;
 
@@ -29,7 +30,10 @@ namespace MyCo.Tasks
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(NodeNameHeaderFilter));
+            });
 
             bool useInMemDatabase = this.Configuration.GetValue<bool>("UseInMemDatabase");
 
@@ -39,12 +43,13 @@ namespace MyCo.Tasks
             }
             else
             {
-                services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=localhost,1401; Database=Tasks; User ID=sa; Password=p@ssw0rz!@#"));
+                services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=db,1433; Database=Tasks; User ID=sa; Password=p@ssw0rz!@#"));
             }
 
             services.AddScoped(
                 typeof(TasksRepository),
                 typeof(EntityFrameworkTasksRepository));
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

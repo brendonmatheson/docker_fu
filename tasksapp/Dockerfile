@@ -18,8 +18,8 @@ FROM microsoft/aspnetcore-build:2.0-jessie AS tasks-build
 
 RUN mkdir /build
 WORKDIR /build
-
 COPY MyCo.Tasks/ ./
+
 # Clean first in case when we're building on a dev machine where build artifacts may exist in the working tree.
 RUN dotnet clean
 RUN dotnet restore
