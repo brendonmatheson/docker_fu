@@ -14,7 +14,7 @@
 # Build the application using the aspnetcore-build containerized build environment
 #
 
-FROM microsoft/aspnetcore-build:2.0-jessie AS tasks-build
+FROM microsoft/aspnetcore-build:2.0.0 AS tasks-build
 
 RUN mkdir /build
 WORKDIR /build
@@ -32,7 +32,7 @@ RUN dotnet publish -c Release -o out
 # temporary build container.
 #
 
-FROM microsoft/aspnetcore:2.0-jessie
+FROM microsoft/aspnetcore:2.0.0
 
 RUN mkdir /service
 WORKDIR /service
