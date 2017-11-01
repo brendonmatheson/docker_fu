@@ -10,11 +10,5 @@ REM
 REM This material is published under the terms of the Creative Commons BY-NC-ND license.  See
 REM https:REMcreativecommons.org/licenses/by-nc-nd/4.0 for details
 
-docker run ^
-	--rm ^
-	-e "ASPNET_ENVIRONMENT=Production" ^
-	-p 9870:80 ^
-	--name tasks-dev ^
-	-it ^
-	myco/tasks:latest
+docker stop tasks-dev
 
