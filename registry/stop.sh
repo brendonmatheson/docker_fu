@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker stop registry
+sudo docker stop registry
 

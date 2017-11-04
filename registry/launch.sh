@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run -d \
+sudo docker run -d \
 	--name registry \
 	--restart always \
 	-v registry-data:/var/lib/registry \
