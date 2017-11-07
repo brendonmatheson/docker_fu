@@ -43,7 +43,7 @@ namespace MyCo.Tasks
             }
             else
             {
-                services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=db,1433; Database=Tasks; User ID=sa; Password=p@ssw0rz!@#"));
+                services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=db,1433; Database=Tasks; User ID=sa; Password=p@ssw0rz@#"));
             }
 
             services.AddScoped(

@@ -13,7 +13,7 @@ services:
         image: microsoft/mssql-server-windows-developer:2017
         environment:
             ACCEPT_EULA: "Y"
-            SA_PASSWORD: "p@ssw0rz!@#"
+            SA_PASSWORD: "p@ssw0rz@#"
             ATTACH_DBS: "[{'dbName':'Tasks','dbFiles':['C:\\\\data\\\\Tasks.mdf', 'C:\\\\data\\\\Tasks.ldf']}]"
         volumes:
             - "tasks-db:C:\\data"

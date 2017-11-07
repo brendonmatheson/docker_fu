@@ -35,7 +35,7 @@ services:
         image: microsoft/mssql-server-linux:2017-GA
         environment:
             ACCEPT_EULA: "Y"
-            MSSQL_SA_PASSWORD: "p@ssw0rz!@#"
+            MSSQL_SA_PASSWORD: "p@ssw0rz@#"
         volumes:
             - tasks-db:/var/opt/mssql
         expose:
