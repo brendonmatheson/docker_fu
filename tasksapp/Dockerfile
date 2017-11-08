@@ -34,11 +34,6 @@ RUN dotnet publish -c Release -o out
 
 FROM microsoft/aspnetcore:2.0.0
 
-RUN apt-get update
-RUN apt-get install -y \
-	dnsutils \
-	net-tools
-
 RUN mkdir /service
 WORKDIR /service
 

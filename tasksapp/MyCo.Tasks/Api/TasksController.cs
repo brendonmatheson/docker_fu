@@ -11,6 +11,7 @@
 namespace MyCo.Tasks.Api
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using MyCo.Tasks;
     using MyCo.Tasks.Framework;
     using MyCo.Tasks.Repository;
@@ -21,13 +22,17 @@ namespace MyCo.Tasks.Api
     [Route("api/[controller]")]
     public class TasksController : Controller
     {
+        readonly ILogger<TasksController> _log;
         private TasksRepository _repo;
 
         public TasksController(
+            ILogger<TasksController> log,
             TasksRepository repo)
         {
+            if (log == null) { throw new ArgumentNullException("log"); }
             if (repo == null) { throw new ArgumentNullException("repo"); }
 
+            _log = log;
             _repo = repo;
         }
 
@@ -35,12 +40,15 @@ namespace MyCo.Tasks.Api
         [HttpGet(Name = "TaskSearch")]
         public IEnumerable<TaskResource> TaskSearch()
         {
+            _log.LogDebug("TaskSearch");
+
             IList<TaskEntity> entities = _repo.TaskSearch();
 
             IList<TaskResource> resources = entities
                 .Select(TasksExtensions.ToResource)
                 .ToList();
 
+            _log.LogDebug("Returning result");
             return resources;
         }
 
@@ -48,6 +56,8 @@ namespace MyCo.Tasks.Api
         [HttpGet("{taskId}", Name = "TaskGet")]
         public IActionResult TaskGet(Guid? taskId)
         {
+            _log.LogDebug("TaskGet");
+
             if (taskId == null) { throw new ArgumentNullException("taskId"); }
             if (taskId == Guid.Empty) { throw new ArgumentException("Value cannot be empty.", "taskId"); }
 
@@ -55,11 +65,13 @@ namespace MyCo.Tasks.Api
             {
                 TaskResource resource = _repo.TaskGet(taskId.Value).ToResource();
 
+                _log.LogDebug("Returning result");
                 return new ObjectResult(resource);
                     
             }
             catch(ItemNotFoundException e)
             {
+                _log.LogDebug("Returning NotFound");
                 return NotFound();
             }
         }

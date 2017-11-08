@@ -15,9 +15,11 @@ namespace MyCo.Tasks
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using MyCo.Tasks.Api;
     using MyCo.Tasks.Repository;
     using MyCo.Tasks.Repository.Impl.EntityFramework;
+    using Serilog;
 
     public class Startup
     {
@@ -44,6 +46,7 @@ namespace MyCo.Tasks
             else
             {
                 services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=db,1433; Database=Tasks; User ID=sa; Password=p@ssw0rz@#"));
+                //services.AddDbContext<TasksContext>(x => x.UseSqlServer("Server=127.0.0.1,1401; Database=Tasks; User ID=sa; Password=p@ssw0rz@#"));
             }
 
             services.AddScoped(
@@ -52,12 +55,21 @@ namespace MyCo.Tasks
 
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env,
+            ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDeveloperExceptionPage();
+
+            loggerFactory.AddConsole();
+            loggerFactory.AddDebug();
+            loggerFactory.AddFile("logs/tasks-{Date}.log");
 
             app.UseMvc();
         }
