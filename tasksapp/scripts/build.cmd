@@ -11,6 +11,5 @@ REM This material is published under the terms of the Creative Commons BY-NC-ND 
 REM https:REMcreativecommons.org/licenses/by-nc-nd/4.0 for details
 
 docker build ^
-	-t myco/tasks ^
+	-t myco/api ^
 	.
-

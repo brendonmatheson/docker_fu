@@ -16,5 +16,4 @@ docker run ^
 	-p 9870:80 ^
 	--name tasks-dev ^
 	-it ^
-	myco/tasks:latest
-
+	myco/api:latest

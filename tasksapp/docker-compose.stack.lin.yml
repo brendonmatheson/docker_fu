@@ -1,7 +1,7 @@
 version: '3'
 services:
     api:
-        image: myco/tasks
+        image: myco/api
         depends_on:
             - db
         environment:

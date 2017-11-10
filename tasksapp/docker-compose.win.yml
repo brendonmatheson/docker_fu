@@ -3,7 +3,7 @@ services:
 
     api:
         build: .
-        image: myco/tasks
+        image: myco/api
         environment:
             ASPNETCORE_ENVIRONMENT: "Production"
         ports:

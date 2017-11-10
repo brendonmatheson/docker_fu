@@ -3,19 +3,19 @@ services:
 
     api1:
         build: .
-        image: myco/tasks
+        image: myco/api
         environment:
             ASPNETCORE_ENVIRONMENT: "Production"
 
     api2:
         build: .
-        image: myco/tasks
+        image: myco/api
         environment:
             ASPNETCORE_ENVIRONMENT: "Production"
 
     api3:
         build: .
-        image: myco/tasks
+        image: myco/api
         environment:
             ASPNETCORE_ENVIRONMENT: "Production"
 
