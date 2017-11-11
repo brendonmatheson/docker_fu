@@ -1,0 +1,50 @@
+version: "3"
+services:
+
+    api1:
+        build: .
+        image: myco/api
+        environment:
+            ASPNETCORE_ENVIRONMENT: "Production"
+
+    api2:
+        build: .
+        image: myco/api
+        environment:
+            ASPNETCORE_ENVIRONMENT: "Production"
+
+    api3:
+        build: .
+        image: myco/api
+        environment:
+            ASPNETCORE_ENVIRONMENT: "Production"
+
+    haproxy:
+        image: library/haproxy:1.7
+        volumes:
+          - haproxy_cfg:/usr/local/etc/haproxy
+        ports:
+            - "9880:80"
+            - "9881:70"
+        links:
+            - api1
+            - api2
+            - api3
+
+    db:
+        image: microsoft/mssql-server-linux:2017-GA
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: "p@ssw0rz@#"
+        volumes:
+            - tasks-db:/var/opt/mssql
+        expose:
+            - "1433"
+        ports:
+            - "1402:1433"
+
+volumes:
+    haproxy_cfg:
+        external: true
+    tasks-db:
+        external: true
