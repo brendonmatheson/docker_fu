@@ -1,0 +1,37 @@
+version: '3'
+services:
+    api:
+        image: myco/api
+        depends_on:
+            - db
+        environment:
+            ASPNETCORE_ENVIRONMENT: "Production"
+        ports:
+            - "9870:80"
+        networks:
+            - backend
+        deploy:
+            replicas: 5
+
+    db:
+        image: microsoft/mssql-server-linux:2017-GA
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: "p@ssw0rz@#"
+        volumes:
+            - tasks-db:/var/opt/mssql
+        networks:
+            - backend
+        deploy:
+            replicas: 1
+            placement:
+                constraints:
+                    - "node.role==manager"
+
+volumes:
+    tasks-db:
+        external: true
+
+networks:
+    backend:
+        driver: overlay
