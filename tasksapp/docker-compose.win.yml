@@ -1,0 +1,25 @@
+version: "3"
+services:
+
+    api:
+        build: .
+        image: myco/api
+        environment:
+            ASPNETCORE_ENVIRONMENT: "Production"
+        ports:
+            - "9871:80"
+
+    db:
+        image: microsoft/mssql-server-windows-developer:2017
+        environment:
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: "p@ssw0rz@#"
+            ATTACH_DBS: "[{'dbName':'Tasks','dbFiles':['C:\\\\data\\\\Tasks.mdf', 'C:\\\\data\\\\Tasks.ldf']}]"
+        volumes:
+            - "tasks-db:C:\\data"
+        ports:
+            - "1401:1433"
+
+volumes:
+    tasks-db:
+        external: true
